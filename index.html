@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consulta de Suplementos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f9f9f9;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    .search-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+      gap: 10px;
+    }
+    .search-container select, .search-container input {
+      padding: 10px;
+      width: 200px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .search-container button {
+      padding: 10px 20px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .search-container button:hover {
+      background-color: #0056b3;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+      border: 1px solid #ddd;
+    }
+    th {
+      background-color: #007BFF;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    tr:hover {
+      background-color: #e0e0e0;
+    }
+    .update-message {
+      text-align: center;
+      color: green;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Consulta de Suplementos</h1>
+  <div class="search-container">
+    <select id="supplementSelect">
+      <option value="creatina">Creatina</option>
+    </select>
+    <input type="text" id="brandInput" placeholder="Buscar por marca (opcional)">
+    <input type="text" id="productInput" placeholder="Buscar por produto (opcional)">
+    <button onclick="searchSupplement()">Buscar</button>
+  </div>
+  <div id="resultsContainer"></div>
+
+  <script>
+    // Variável global para armazenar os dados
+    let creatineData = [];
+
+    // Função para carregar os dados do arquivo JSON
+    async function loadLocalData() {
+      try {
+        const response = await fetch('dados_creatina.json'); // Carrega o arquivo JSON
+        if (!response.ok) {
+          throw new Error(`Erro ao carregar dados: ${response.status}`);
+        }
+        const data = await response.json();
+        creatineData = data.flatMap(category => category.produtos); // Extrai todos os produtos
+        console.log("Dados carregados:", creatineData); // Log para depuração
+        searchSupplement(); // Exibe todos os dados ao carregar a página
+      } catch (error) {
+        console.error("Erro ao carregar dados locais:", error);
+        document.getElementById("resultsContainer").innerHTML = "<p>Erro ao carregar os dados. Verifique o console para mais detalhes.</p>";
+      }
+    }
+
+    // Função para buscar e exibir resultados
+    function searchSupplement() {
+      const supplement = document.getElementById("supplementSelect").value.trim().toLowerCase();
+      const brandQuery = document.getElementById("brandInput").value.trim().toLowerCase();
+      const productQuery = document.getElementById("productInput").value.trim().toLowerCase();
+      const resultsContainer = document.getElementById("resultsContainer");
+
+      if (supplement === "creatina") {
+        let filteredData = creatineData;
+
+        console.log("Dados brutos:", creatineData); // Log para depuração
+
+        // Filtra por marca, se o campo não estiver vazio
+        if (brandQuery) {
+          filteredData = filteredData.filter(item => item.marca.toLowerCase().includes(brandQuery));
+          console.log("Dados filtrados por marca:", filteredData); // Log para depuração
+        }
+
+        // Filtra por produto, se o campo não estiver vazio
+        if (productQuery) {
+          filteredData = filteredData.filter(item => item.produto.toLowerCase().includes(productQuery));
+          console.log("Dados filtrados por produto:", filteredData); // Log para depuração
+        }
+
+        // Monta a tabela
+        let tableHTML = `
+          <table>
+            <thead>
+              <tr>
+                <th>Marca</th>
+                <th>Produto</th>
+                <th>Resultado</th>
+              </tr>
+            </thead>
+            <tbody>
+        `;
+
+        if (filteredData.length > 0) {
+          filteredData.forEach(item => {
+            tableHTML += `
+              <tr>
+                <td>${item.marca}</td>
+                <td>${item.produto}</td>
+                <td>${item.resultado}</td>
+              </tr>
+            `;
+          });
+        } else {
+          tableHTML += "<tr><td colspan='3'>Nenhum resultado encontrado.</td></tr>";
+        }
+
+        tableHTML += "</tbody></table>";
+        resultsContainer.innerHTML = tableHTML;
+      }
+    }
+
+    // Carrega os dados ao iniciar a página
+    loadLocalData();
+  </script>
+</body>
+</html>
