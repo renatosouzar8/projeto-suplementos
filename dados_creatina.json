@@ -64,5 +64,43 @@
       { "marca": "NUTREX RESEARCH", "produto": "CREATINE DRIVE", "resultado": "REGULAR/APROVADO" },
       { "marca": "SHARK PRO", "produto": "ENERGY CREATINA", "resultado": "REGULAR/APROVADO" }
     ]
+  },
+  {
+    "categoria": "APROVADOS 10,1% - 20%",
+    "produtos": [
+      { "marca": "BRN FOODS", "produto": "PREMIUM CREATINA", "resultado": "REGULAR/APROVADO" },
+      { "marca": "HARDCORE SPORTS NUTRITION", "produto": "CREATINA", "resultado": "REGULAR/APROVADO" },
+      { "marca": "PROFIT LAB", "produto": "CREATINE POWER", "resultado": "REGULAR/APROVADO" },
+      { "marca": "RED", "produto": "BRUTAL CREATINE", "resultado": "REGULAR/APROVADO" },
+      { "marca": "SYNTHESIZE", "produto": "CREATINA POWDER", "resultado": "REGULAR/APROVADO" },
+      { "marca": "Vitamax Nutrition", "produto": "Creatine Booster", "resultado": "REGULAR/APROVADO" }
+    ]
+  },
+  {
+    "categoria": "REPROVADOS -100%",
+    "produtos": [
+      { "marca": "AGE", "produto": "Creatine Monohidratada", "resultado": "IRREGULAR/REPROVADO" },
+      { "marca": "Cellucor", "produto": "Creatin", "resultado": "IRREGULAR/REPROVADO" },
+      { "marca": "Dymatrix Nutrition", "produto": "Creatina Monohidrate", "resultado": "IRREGULAR/REPROVADO" },
+      { "marca": "GENERIC LABS", "produto": "Creatina Monohidratada", "resultado": "IRREGULAR/REPROVADO" },
+      { "marca": "IMPURE NUTRITION", "produto": "CREATINA", "resultado": "IRREGULAR/REPROVADO" },
+      { "marca": "INTLAB", "produto": "Power Creatina", "resultado": "IRREGULAR/REPROVADO" },
+      { "marca": "Iron Tech Sports Nutrition", "produto": "Creatina Monohidratada", "resultado": "IRREGULAR/REPROVADO" },
+      { "marca": "Muscle Pharm", "produto": "Creatine", "resultado": "IRREGULAR/REPROVADO" },
+      { "marca": "NFT Nutrition", "produto": "Creatina 100% Pura", "resultado": "IRREGULAR/REPROVADO" },
+      { "marca": "TRIBE NUTRITION", "produto": "Creatina Monohidratada", "resultado": "IRREGULAR/REPROVADO" }
+    ]
+  },
+  {
+    "categoria": "REPROVADOS -21% a 99%",
+    "produtos": [
+      { "marca": "BODY NUTRY", "produto": "CREATINA ENERGY", "resultado": "IRREGULAR/REPROVADO" },
+      { "marca": "Dark Dragon", "produto": "Crea Delite", "resultado": "IRREGULAR/REPROVADO" },
+      { "marca": "Melius Nutrition", "produto": "CREATINA 100%", "resultado": "IRREGULAR/REPROVADO" },
+      { "marca": "MUSCLE FULL", "produto": "CREATINA", "resultado": "IRREGULAR/REPROVADO" },
+      { "marca": "PROSIZE", "produto": "creatine", "resultado": "IRREGULAR/REPROVADO" },
+      { "marca": "SCI NUTRITION", "produto": "CREATINA PURA", "resultado": "IRREGULAR/REPROVADO" },
+      { "marca": "BODY NUTRY", "produto": "CREATINE", "resultado": "IRREGULAR/REPROVADO" }
+    ]
   }
 ]
